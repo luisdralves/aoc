@@ -1,16 +1,16 @@
 
 ans = 0
+recents_target_size = 14
 
 with open('6.txt', 'r') as file:
     line = file.readline().rstrip()
     recents = []
     for i, ch in enumerate(line):
-        if len(recents) < 14:
+        if len(recents) < recents_target_size:
             recents.append(ch)
             continue
         recents = recents[1:]+[ch]
-        uniqs = list(dict.fromkeys(recents))
-        if len(uniqs) == len(recents):
+        if len(recents) == len(set(recents)):
             ans = i+1
             break
 
